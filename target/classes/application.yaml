@@ -1,0 +1,17 @@
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 3   # three requests
+      limitRefreshPeriod: 10s  #reset after 10 seconds
+      timeoutDuration: 10ms
+    backendAConfig:
+      limitForPeriod: 10
+      limitRefreshPeriod: 90s
+      timeoutDuration: 100ms
+  instances:
+    backendA:
+      baseConfig: backendAConfig
+    backendB:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1s
+      timeoutDuration: 100ms
